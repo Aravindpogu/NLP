@@ -1,0 +1,26 @@
+## Synopsis
+
+Java application that uses GATE Twitter POS tagger for part of speech tagging.
+The tagger is distributed as an Open Source API within the TwitIE Natural language
+processing, which serves as a model for the Stanford tagger. The model distributed as a
+single file, for use in existing applications (this excludes handling of slang and prior
+probabilities) -- gate-EN-twitter.model (GATE, 2015).
+
+1. To generate the POS_result.txt we used startPOSTagging() method on the
+POS_tagger_input.txt file after building a Java class POSTagProcessor.java that
+needs: common-lang3.jar, slf4j-api.jar,slf4j-simple.jar along with stanford-
+postagger.jar
+2. To compute the frequency of each tag we designed three methods:
+	>- *writeToPOSResultFile():* We first read the POS tags from tagsNames.txt file and stored it into a Hash map. Then we read the POS_tagger_input.txt file and tagged all the words with corresponding tags and stored the resulted lines with POS tags in POS_results.txt file. We have made use of gate-En-twitter.model in MaxtentTagger and made use of tagString() method of it totag the words.
+	>- *calculateFrequencies():* We have computed how many times each tag appeared in our generated POS_result.txt file
+	>- *writeToFreqDistribFile():* Then we wrote the frequencies in a readable file called POS_tagger_freq_result.txt
+3. Finally, we compared our resulted file -- POS_result.txt with the expected output file-- POS_tagger_output.txt and calculated the accuracy by comparing line by line in method *evaluateAccuarcy()*.
+
+## Motivation
+
+It will be head start for the ones who want to start learning POS tagging of twitters using NLP in java
+
+## Test and run the program 
+
+java POSTagProcessor
+
